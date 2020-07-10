@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      button {
+        height: 20px;
+        width: 80px;
+        outline: none;
+      }
+      .scrollbar {
+        overflow: auto;
+        max-height: 450px;
+      }
+      .scrollbar > div {
+        font-size: 14px;
+        padding-left: 3px;
+        padding-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="confirm-button">confirm</button>
+    <div id="display-attendance" class="scrollbar"></div>
+    <script src="popup.js"></script>
+  </body>
+</html>
