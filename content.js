@@ -1,5 +1,4 @@
 'use strict'
-// chrome.runtime.onMessage.addListener((request, sender) => {
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   let userNames = []
   let getUserNames = function () {

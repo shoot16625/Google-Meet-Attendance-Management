@@ -117,15 +117,15 @@ confirmButton.onclick = function () {
               const matchAttendingUser = new Set(
                 Object.values(attendance2attending)
               )
-              let hasUnknouwnUser = true
+              let hasUnknownUser = true
               for (let index = 0; index < attendingUsers.length; index++) {
                 if (
                   matchAttendingUser.has(attendingUsers[index].toLowerCase())
                 ) {
                 } else {
-                  if (hasUnknouwnUser) {
+                  if (hasUnknownUser) {
                     text += `<div>unknown</div>`
-                    hasUnknouwnUser = !hasUnknouwnUser
+                    hasUnknownUser = !hasUnknownUser
                   }
                   text += `<div>${attendingUsers[index]}</div>`
                 }
