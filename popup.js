@@ -124,7 +124,7 @@ confirmButton.onclick = function () {
                 ) {
                 } else {
                   if (hasUnknownUser) {
-                    text += `<div>unknown</div>`
+                    text += `<div style="background-color:gainsboro;">unknown</div>`
                     hasUnknownUser = !hasUnknownUser
                   }
                   text += `<div>${attendingUsers[index]}</div>`
