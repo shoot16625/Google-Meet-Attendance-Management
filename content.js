@@ -3,7 +3,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   let userNames = []
   let getUserNames = function () {
     // meetsでユーザーがリスト表示されているクラス
-    let users = document.getElementsByClassName('cS7aqe')
+    let users = document.getElementsByClassName('ZjFb7c')
     for (let index = 0; index < users.length; index++) {
       const user = users[index]
       let userName = user.textContent

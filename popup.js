@@ -104,15 +104,21 @@ confirmButton.onclick = function () {
               elem = document.getElementById('display-attendance')
               let text = `<div>attending:${attendingEmail.length}</div>
           <div>attendance:${attendees.length}</div>`
+              // 不参加ユーザを上部に集める
+              let not_attending = ''
+              let attending = ''
               for (let index = 0; index < attendees.length; index++) {
                 const user = attendees[index]
                 let color = 'skyblue'
                 if (attendance2attending[user] === '') {
                   // 欠席ユーザ
                   color = 'tomato'
+                  not_attending += `<div style="background-color:${color};">${user}</div>`
+                } else {
+                  attending += `<div style="background-color:${color};">${user}</div>`
                 }
-                text += `<div style="background-color:${color};">${user}</div>`
               }
+              text += not_attending + attending
               // マッチしなかった参加ユーザ
               const matchAttendingUser = new Set(
                 Object.values(attendance2attending)
@@ -124,7 +130,7 @@ confirmButton.onclick = function () {
                 ) {
                 } else {
                   if (hasUnknownUser) {
-                    text += `<div style="background-color:gainsboro;">unknown</div>`
+                    text += `<div style="background-color:gainsboro;">--unknown--</div>`
                     hasUnknownUser = !hasUnknownUser
                   }
                   text += `<div>${attendingUsers[index]}</div>`

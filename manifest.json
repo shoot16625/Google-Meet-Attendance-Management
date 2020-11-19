@@ -1,7 +1,7 @@
 {
   "name": "Google Meet Attendance Management",
   "short_name": "GMAM",
-  "version": "1.03",
+  "version": "1.04",
   "description": "You can check the Google Meet attendance of users who are going to attend in the Google Calendar.",
   "manifest_version": 2,
   "author": "shoot16625",
