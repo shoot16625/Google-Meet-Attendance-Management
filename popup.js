@@ -103,23 +103,33 @@ confirmButton.onclick = function () {
               })
               // popupに結果を表示
               elem = document.getElementById('display-attendance')
-              let text = `<div>attending:${attendingEmail.length}</div>
-          <div>attendance:${attendees.length}</div>`
+              let text = `
+                <table>
+                  <tr>
+                    <th>attending</th>
+                    <td>${attendingEmail.length}</td>
+                  </tr>
+                  <tr>
+                    <th>attendance</th>
+                    <td>${attendees.length}</td>
+                  </tr>
+                </table>
+              `
               // 不参加ユーザを上部に集める
-              let not_attending = ''
-              let attending = ''
+              let not_attending = attending = ''
               for (let index = 0; index < attendees.length; index++) {
                 const user = attendees[index]
                 let color = 'skyblue'
                 if (attendance2attending[user] === '') {
                   // 欠席ユーザ
                   color = 'tomato'
-                  not_attending += `<div style="background-color:${color};">${user}</div>`
+                  not_attending += `<div class="name-area" style="background-color:${color};">${user}</div>`
                 } else {
-                  attending += `<div style="background-color:${color};">${user}</div>`
+                  attending += `<div class="name-area" style="background-color:${color};">${user}</div>`
                 }
               }
               text += not_attending + attending
+
               // マッチしなかった参加ユーザ
               const matchAttendingUser = new Set(
                 Object.values(attendance2attending)
@@ -131,12 +141,13 @@ confirmButton.onclick = function () {
                 ) {
                 } else {
                   if (hasUnknownUser) {
-                    text += `<div style="background-color:gainsboro;">--unknown--</div>`
+                    text += `<div style="text-align:center; font-size:12px;">-- unknown --</div>`
                     hasUnknownUser = !hasUnknownUser
                   }
-                  text += `<div>${attendingUsers[index]}</div>`
+                  text += `<div class="name-area" style="background-color:gainsboro;">${attendingUsers[index]}</div>`
                 }
               }
+              text += `<div class="review-link"><a href="https://chrome.google.com/webstore/detail/google-meet-attendance-ma/gcjjaejjfoiaojgcenhjnbmmnphkojhd?hl=ja&authuser=1" target="_blank" rel="noopener noreferrer">Please Your Review!!</a></div>`
               elem.innerHTML = text
             })
         })
