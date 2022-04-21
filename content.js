@@ -3,7 +3,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   let userNames = []
   let getUserNames = function () {
     // meetsでユーザーがリスト表示されているクラス
-    let users = document.getElementsByClassName('ZjFb7c')
+    let users = document.getElementsByClassName('zWGUib')
     for (let index = 0; index < users.length; index++) {
       const user = users[index]
       let userName = user.textContent
@@ -13,10 +13,20 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       userNames.push(userName)
     }
   }
-  // ユーザーのリストを表示する
-  document.getElementsByClassName('gV3Svc')[0].click()
+
+  let isOpend = false
+  const iconElements = $('.P9KVBf .JsuyRc[aria-pressed="true"] .Mwv9k')
+  if (iconElements.length) {
+    isOpend = iconElements[0].innerHTML == "people_alt"
+  }
+  if (!isOpend) {
+    // ユーザーリストが開かれていなければ、開く
+    document.getElementsByClassName('VfPpkd-Bz112c-LgbsSe yHy1rc eT1oJ JsuyRc boDUxc')[1].click()
+  }
+
+  const scrollSelection = '.ggUFBf.Ze1Fpc' // スペース禁止
   // スクロールトップに移動しておく
-  $('.HALYaf').scrollTop(0)
+  $(scrollSelection).scrollTop(0)
 
   // 200人くらい取れる？
   const move = 400
@@ -36,7 +46,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       clearInterval(id) //idをclearIntervalで指定している
       sendResponse(userNames)
     }
-    $('.HALYaf').scrollTop(move * index)
+    $(scrollSelection).scrollTop(move * index)
     index++
   }, 100)
 
