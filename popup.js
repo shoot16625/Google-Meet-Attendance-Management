@@ -37,8 +37,9 @@ confirmButton.onclick = function () {
           .map((name) => `${name}=${encodeURIComponent(params[name])}`)
           .join('&')
 
-        chrome.tabs.getSelected((tab) => {
+        chrome.tabs.query({active: true}, (tabs) => {
           // 現在のタブを取得
+          tab = tabs[0]
           targetHangoutLink = tab.url.split('?')[0]
 
           // 出席予定者をcalenderから取得

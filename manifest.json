@@ -1,16 +1,13 @@
 {
   "name": "Google Meet Attendance Management",
   "short_name": "GMAM",
-  "version": "1.04",
+  "version": "1.06",
   "description": "You can check the Google Meet attendance of users who are going to attend in the Google Calendar.",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "author": "shoot16625",
   "permissions": ["activeTab","declarativeContent", "identity"],
   "background": {
-    "scripts": [
-      "background.js"
-    ],
-    "persistent": false
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
@@ -22,7 +19,7 @@
     "client_id": "chenge-your-client_id.apps.googleusercontent.com",
     "scopes":["https://www.googleapis.com/auth/calendar.events.readonly"]
   },
-  "page_action": {
+  "action": {
       "default_popup": "popup.html",
       "default_title":"Google Meet Attendance Management",
       "default_icon": {
