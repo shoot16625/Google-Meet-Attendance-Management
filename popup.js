@@ -109,16 +109,6 @@ confirmButton.onclick = function () {
               // popupに結果を表示
               elem = document.getElementById('display-attendance')
               let text = `
-                <table>
-                  <tr>
-                    <th>attending</th>
-                    <td>${attendingEmail.length}</td>
-                  </tr>
-                  <tr>
-                    <th>attendance</th>
-                    <td>${attendees.length}</td>
-                  </tr>
-                </table>
               `
               // 不参加ユーザを上部に集める
               let not_attending = attending = ''
@@ -126,14 +116,24 @@ confirmButton.onclick = function () {
                 const user = attendees[index]
                 let color = 'skyblue'
                 if (attendance2attending[user] === '') {
-                  // 欠席ユーザ
                   color = 'tomato'
                   not_attending += `<div class="name-area" style="background-color:${color};">${user}</div>`
                 } else {
-                  attending += `<div class="name-area" style="background-color:${color};">${user}</div>`
+                  attending += `<div class="name-area-xxxx" style="background:${color};">${user}</div>`
                 }
               }
               text += not_attending + attending
+
+              for (let index = 0; index < attendees.length; index++) {
+                const user = attendees[index]
+                let color = 'skyblue'
+                if (attendance2attending[user] === '') {
+                  color = 'tomato'
+                  not_attending += `<div class="name-area" style="background-color:${color};">${user}</div>`
+                } else {
+                  attending += `<div class="name-area-xxxx" style="background:${color};">${user}</div>`
+                }
+              }
 
               // マッチしなかった参加ユーザ
               const matchAttendingUser = new Set(
