@@ -38,9 +38,14 @@ confirmButton.onclick = function () {
           .join('&')
 
         chrome.tabs.query({active: true}, (tabs) => {
-          // 現在のタブを取得
-          tab = tabs[0]
-          targetHangoutLink = tab.url.split('?')[0]
+          // 現在のタブを取得(複数取得される場合もある)
+          for (let index = 0; index < tabs.length; index++) {
+            const tab = tabs[index]
+            if (tab.hasOwnProperty('url')){
+              targetHangoutLink = tab.url.split('?')[0]
+              break
+            }
+          }
 
           // 出席予定者をcalenderから取得
           let attendees = []
